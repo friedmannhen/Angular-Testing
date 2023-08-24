@@ -5,8 +5,7 @@
     <p>Release: {{movie.release | date}}</p>
     <button (click)="changeMovie()">Change Movie</button>
 </div> -->
-<mat-card [ngStyle]="{'border-width':borderWidth+'px'}"
-    *ngIf="!!movie">
+<mat-card [ngStyle]="{'border-width':borderWidth+'px'}" *ngIf="!!movie">
     <mat-card-header>
         <div mat-card-avatar class="header-image"></div>
         <mat-card-title>{{movie.name}}</mat-card-title>
@@ -20,8 +19,11 @@
         <p><label>Release:</label> <span>{{movie.release | date}} Fake</span></p>
     </mat-card-content>
     <mat-card-actions>
-        <button mat-button>LIKE</button>
-        <button mat-button>SHARE</button>
-        <button style="margin-left: auto;" mat-raised-button color="warn" (click)="deleteMovie()">Delete Movie</button>
+        <div class="likeShare">
+            <button matBadge="8" matBadgePosition="after" matBadgeColor="accent" matBadgeSize="small"
+                mat-raised-button>LIKE</button>
+            <button mat-raised-button>SHARE</button>
+        </div>
+        <button mat-raised-button color="warn" (click)="deleteMovie()">Delete Movie</button>
     </mat-card-actions>
 </mat-card>
