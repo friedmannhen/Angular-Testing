@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Movie } from '../models/movie.interface';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -8,7 +8,8 @@ import { Subject } from 'rxjs';
 export class MovieService {
   public movieSubject$: Subject<Movie> = new Subject();
   private _movies: Movie[] = [];
-  private visable: boolean = true;
+  private visable: Subject<boolean> = new Subject();
+  private _visible: boolean = true;
   constructor() {}
   public getMovies(): Movie[] {
     return this._movies;
@@ -16,10 +17,11 @@ export class MovieService {
   public setMovies(movies: Movie[]): void {
     this._movies = [...this._movies, ...movies];
   }
-  public isVisble(): boolean {
+  public isVisble(): Observable<boolean> {
     return this.visable;
   }
-  public toggleVisble(){
-    this.visable = !this.visable;
+  public toggleVisble() {
+    this._visible = !this._visible;
+    this.visable.next(this._visible);
   }
 }

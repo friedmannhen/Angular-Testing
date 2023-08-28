@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { Observable, Subscription } from 'rxjs';
 import { Movie } from 'src/app/models/movie.interface';
 import { MovieService } from 'src/app/services/movie.service';
 
@@ -11,8 +12,17 @@ import { MovieService } from 'src/app/services/movie.service';
 export class TemplateDrivenFormsComponent {
   @ViewChild('f') form: any;
   constructor(private movieService: MovieService) {}
-  public visable: boolean = this.movieService.isVisble();
-   
+  public visable: boolean = true;
+  private sub: Subscription = new Subscription();
+
+  ngOnInit(): void {
+    this.sub.add(
+      this.movieService.isVisble().subscribe((isVisible) => {
+        this.visable = isVisible;
+      })
+    );
+  }
+
   public onSubmitForm(): void {
     var newMovie: Movie;
 
@@ -32,7 +42,7 @@ export class TemplateDrivenFormsComponent {
   }
   closeForm() {
     this.movieService.toggleVisble();
-    this.visable = this.movieService.isVisble();
+    //this.visable = this.movieService.isVisble();
   }
   setStartingMovies() {
     const listOfMovies: Movie[] = [
