@@ -5,10 +5,9 @@
 mat-card {
   margin: 20px 20px;
   width: fit-content;
-  box-shadow: 0px 0px 10px grey;
-  border: 10px solid blueviolet;
+  box-shadow: 0px 0px 10px blueviolet , inset 0px 0px 10px blueviolet;;
+  border: 2px solid blueviolet;
   border-radius: 10px;
-  
 }
 .main-img {
   width: 335px;
@@ -31,10 +30,30 @@ mat-card-content p label {
   display: inline-block;
   width: 120px;
 }
-.likeShare button{
-margin-right: 15px;
+.likeShare button {
+  margin-right: 15px;
 }
-mat-card-actions{
+mat-card-actions {
   display: flex;
   justify-content: space-between;
+}
+.add-card {
+  height: 613px;
+  width: 335px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.1s;
+}
+.add-card:active {
+ transform: scale(0.99);
+}
+
+.add-card svg {
+  width: 90px;
+  height: 90px;
+  border: 1px solid;
+  box-shadow: inset 0px 0px 10px blueviolet ,  0px 0px 10px blueviolet;
+  border-radius: 50%;
 }

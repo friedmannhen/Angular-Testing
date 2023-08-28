@@ -1,5 +1,8 @@
-<mat-card cdkDrag>
-    <mat-card-header class="form-cont-handle" cdkDragHandle><h1>Add A Movie</h1></mat-card-header>
+<mat-card cdkDrag *ngIf="visable">
+    <mat-card-header class="form-cont-handle" cdkDragHandle>
+        <h1>Add A Movie</h1>
+<svg width="30" height="30" (click)="closeForm()"  viewBox="0 0 16 16"> <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/> </svg>
+    </mat-card-header>
     <mat-card-content>
         <form (ngSubmit)="onSubmitForm()" #f="ngForm">
             <mat-form-field>
@@ -9,11 +12,11 @@
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Main Character</mat-label>
-                <input ngModel name="MainChar" matInput >
+                <input ngModel name="MainChar" matInput>
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Rating</mat-label>
-                <input ngModel name="Rating" matInput >
+                <input ngModel name="Rating" matInput>
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Release</mat-label>
@@ -21,7 +24,7 @@
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Image</mat-label>
-                <input ngModel name="Image" matInput placeholder="URL">
+                <input ngModel type="url" name="Image" matInput placeholder="URL">
             </mat-form-field>
             <mat-card-actions>
                 <button type="button" mat-raised-button (click)="setStartingMovies()"> Preset</button>

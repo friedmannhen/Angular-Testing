@@ -5,7 +5,7 @@
     <p>Release: {{movie.release | date}}</p>
     <button (click)="changeMovie()">Change Movie</button>
 </div> -->
-<mat-card [ngStyle]="{'border-width':borderWidth+'px'}" *ngIf="!!movie">
+<mat-card *ngIf="!!movie">
     <mat-card-header>
         <div mat-card-avatar class="header-image"></div>
         <mat-card-title>{{movie.name}}</mat-card-title>
@@ -20,10 +20,17 @@
     </mat-card-content>
     <mat-card-actions>
         <div class="likeShare">
-            <button matBadge="8" matBadgePosition="after" matBadgeColor="accent" matBadgeSize="small"
-                mat-raised-button>LIKE</button>
+            <button matBadge="{{ratingBadge}}" matBadgePosition="after" matBadgeColor="accent" matBadgeSize="medium"
+                mat-raised-button (click)="incBadge()">LIKE</button>
             <button mat-raised-button>SHARE</button>
         </div>
         <button mat-raised-button color="warn" (click)="deleteMovie()">Delete Movie</button>
     </mat-card-actions>
+</mat-card>
+
+<mat-card class="add-card" *ngIf="!movie" (click)="toggleForm()">
+    <svg fill="blueviolet" viewBox="0 0 16 16">
+        <path
+            d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+    </svg>
 </mat-card>

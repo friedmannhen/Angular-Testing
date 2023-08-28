@@ -27,8 +27,21 @@ mat-card {
 .mat-card:active {
   box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
     0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+} 
+.form-cont-handle svg{
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  z-index: 10;
+  cursor: pointer;
+  transition: 0.3s;
 }
-
+.form-cont-handle svg:hover{
+transform:rotate(90deg);
+}
+.form-cont-handle svg:active {
+transform:rotate(90deg) scale(0.80);
+}
 .form-cont-handle {
  background-color: #ccc;
   cursor: move;
@@ -43,3 +56,4 @@ mat-card-actions{
   display: flex;
   justify-content: space-between;
 }
+

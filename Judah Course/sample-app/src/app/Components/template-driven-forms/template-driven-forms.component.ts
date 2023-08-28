@@ -11,6 +11,8 @@ import { MovieService } from 'src/app/services/movie.service';
 export class TemplateDrivenFormsComponent {
   @ViewChild('f') form: any;
   constructor(private movieService: MovieService) {}
+  public visable: boolean = this.movieService.isVisble();
+   
   public onSubmitForm(): void {
     var newMovie: Movie;
 
@@ -27,6 +29,10 @@ export class TemplateDrivenFormsComponent {
     } else {
       console.log('Not Valid!');
     }
+  }
+  closeForm() {
+    this.movieService.toggleVisble();
+    this.visable = this.movieService.isVisble();
   }
   setStartingMovies() {
     const listOfMovies: Movie[] = [
@@ -63,7 +69,4 @@ export class TemplateDrivenFormsComponent {
     }
     return;
   }
-  // ngAfterViewInit(): void {
-  //  console.log("Movies:" , this.movieService.getMovies())
-  // }
 }

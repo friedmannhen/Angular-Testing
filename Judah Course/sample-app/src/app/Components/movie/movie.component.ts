@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Movie } from '../../models/movie.interface';
+import { MovieService } from 'src/app/services/movie.service';
 
 var count: number = 0;
 
@@ -9,12 +10,19 @@ var count: number = 0;
   styleUrls: ['./movie.component.scss'],
 })
 export class MovieComponent {
-  constructor() {}
+  public ratingBadge: number = 0;
+  constructor(private movieService: MovieService) {}
   @Input() movie!: Movie;
-  @Input() borderWidth!: Number;
   @Input() movieIndex!: number;
-  @Output() onDeleteMovie: EventEmitter<number> = new EventEmitter;
+  @Output() onDeleteMovie: EventEmitter<number> = new EventEmitter();
   public deleteMovie() {
     this.onDeleteMovie.emit(this.movieIndex);
+  }
+  public incBadge() {
+    this.ratingBadge++;
+  }
+
+  toggleForm(): void {
+    this.movieService.toggleVisble();
   }
 }
