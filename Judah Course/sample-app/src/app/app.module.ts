@@ -15,12 +15,16 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatButtonModule } from '@angular/material/button';
 import { TemplateDrivenFormsComponent } from './Components/template-driven-forms/template-driven-forms.component';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MatSliderModule } from '@angular/material/slider';
+import { AlbumsComponent } from '../../src/app/Components/albums/albums.component';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
     MoviesComponent,
     MovieComponent,
     TemplateDrivenFormsComponent,
+    AlbumsComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,6 +39,8 @@ import { MatBadgeModule } from '@angular/material/badge';
     DragDropModule,
     MatButtonModule,
     MatBadgeModule,
+    MatSliderModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
